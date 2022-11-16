@@ -8,12 +8,20 @@
 #include "EyeColor.h"
 #include "PartnerPreference.h"
 #include "Player.h"
+#include <nlohmann/json.hpp>
+using json = nlohmann::json;
+
 using namespace std;
 
 void ToUpper(string& oldString);
 void GetPlayerJournalSetting();
 bool IsValidIntInEnum(const int numOfItems, int playerInput);
 template <class myType> void PrintQuestionOptions(const int numOfOptions, string(*s)(myType));
+bool ReturningPlayer(Player p);
+const string defaultPlayerJournalSettingsFile = "PlayerJournalSettings.json";
+bool IsFileEmpty(ifstream& pFile);
+Player player{};
+json j;
 
 int main() {
 
@@ -24,14 +32,21 @@ int main() {
 	HairColor hairColor{};
 	EyeColor eyeColor{};
 	PartnerPreference partnerPreference{};
-
 	int age{};
 	char dash{};
 	int heightInInches{}, bodyTypeNum{};
 	int likeAnimals{};
 	bool identityValid{};
 
-	GetPlayerJournalSetting();
+	if (ReturningPlayer(player)) {
+		std::cout << "Welcome back to A Journey for Love" << endl;
+		player.PrintPlayerInfo();
+	}
+	else {
+		std::cout << "Welcome to A Journey for Love" << endl;
+		GetPlayerJournalSetting();
+	}
+	cout << "\nThank you for playing!" << endl;
 }
 
 void ToUpper(string& oldString) {
@@ -54,7 +69,6 @@ void GetPlayerJournalSetting() {
 	bool IsHairColorValid{};
 	bool IsPartnerPreferenceValid{};
 
-	std::cout << "Welcome to A Journey for Love";
 	std::cout << "\nEnter first name: ";
 	getline(std::cin, name);
 
@@ -126,15 +140,20 @@ void GetPlayerJournalSetting() {
 			std::cout << "Invalid entry. Try again." << endl << endl;
 		}
 	} while (!IsHairColorValid);
-	Player player(name, age, IdentityToString(Identity(identityNum)),
+
+	Player createdPlayer(name, age, IdentityToString(Identity(identityNum)),
 		RaceToString(Race(raceNum)), ReligionToString(Religion(religionNum)), BodyTypeToString(BodyType(bodyTypeNum)),
 		EyeColorToString(EyeColor(eyeColorNum)), HairColorToString(HairColor(hairColorNum)),
 		PartnerPreferenceToString(PartnerPreference(partnerPreferenceNum)));
+	player = createdPlayer;
+	//Create JSON file to store player data
+	player.ToJson(j, player, defaultPlayerJournalSettingsFile);
 	player.PrintPlayerInfo();
+
 	std::cout << "\nThank you for entering your settings!" << endl;
 }
 
-template <class myType> void PrintQuestionOptions(const int numOfOptions,  string (*s)(myType)) {
+template <class myType> void PrintQuestionOptions(const int numOfOptions, string(*s)(myType)) {
 	for (int i = 1; i <= numOfOptions; i++) {
 		std::cout << i << "." << s(myType(i)) << endl;
 	}
@@ -146,4 +165,20 @@ bool IsValidIntInEnum(const int numOfItems, int playerInput) {
 	}
 	else return false;
 }
-
+bool ReturningPlayer(Player p) {
+	ifstream ifs;
+	ifs.open(defaultPlayerJournalSettingsFile);
+	json j;
+	if (!IsFileEmpty(ifs)) {
+		player.FromJson(player, defaultPlayerJournalSettingsFile);
+		ifs.close();
+		return true;
+	}
+	else {
+		ifs.close();
+		return false;
+	}
+}
+bool IsFileEmpty(ifstream& pFile) {
+	return pFile.peek() == ifstream::traits_type::eof();
+}
