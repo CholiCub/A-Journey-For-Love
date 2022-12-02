@@ -8,6 +8,7 @@
 #include "EyeColor.h"
 #include "PartnerPreference.h"
 #include "Player.h"
+#include "Date.h"
 #include <nlohmann/json.hpp>
 using json = nlohmann::json;
 
@@ -20,6 +21,7 @@ template <class myType> void PrintQuestionOptions(const int numOfOptions, string
 bool ReturningPlayer(Player p);
 const string defaultPlayerJournalSettingsFile = "PlayerJournalSettings.json";
 bool IsFileEmpty(ifstream& pFile);
+void Game();
 Player player{};
 json j;
 
@@ -46,7 +48,8 @@ int main() {
 		std::cout << "Welcome to A Journey for Love" << endl;
 		GetPlayerJournalSetting();
 	}
-	cout << "\nThank you for playing!" << endl;
+	Game();
+	cout << "\n\nThank you for playing!" << endl;
 }
 
 void ToUpper(string& oldString) {
@@ -181,4 +184,16 @@ bool ReturningPlayer(Player p) {
 }
 bool IsFileEmpty(ifstream& pFile) {
 	return pFile.peek() == ifstream::traits_type::eof();
+}
+void Game() 	{
+	Date tutorialDate("Sam", 30, "Trans Women", "Black", "Catholic", "Thin", "Black", "Brown", "Men", "Dominant", "Casual", "Stranger", 0);
+	const string quote = "\"";
+	
+	cout << "\nMatchmaker:" + quote + "You are going to be going on a date with " + tutorialDate.getName() + quote + "\n";
+	cout << "\nScene\n-----" << endl;
+	cout << "You walk into the restaurant and see your date sitting at the table" << endl;
+	cout << "Their " + tutorialDate.getHairColor() + " hair shimmering by the lamp above and their " + tutorialDate.getEyeColor() +
+		" eyes staring up at you. You notice they appear to be of " + tutorialDate.getRace() + " decendants and " + tutorialDate.getBodyType() + ".\n";
+	cout << "You sit down at the table with them.";
+	cout << "\n" +tutorialDate.getName()+":" + quote + "Hi, I'm " + tutorialDate.getName() + quote + "\n";
 }
