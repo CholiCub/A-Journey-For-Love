@@ -14,17 +14,17 @@ using json = nlohmann::json;
 using namespace std;
 
 void ToUpper(string& oldString);
-void GetPlayerJournalSetting(Player PLAYER);
+void GetPlayerJournalSetting(Player PLAYER, json& JSON);
 bool IsValidIntInEnum(const int numOfItems, int playerInput);
 template <class myType> void PrintQuestionOptions(const int numOfOptions, string(*s)(myType));
 bool ReturningPlayer(Player& player);
 bool IsFileEmpty(ifstream& pFile);
 
 const string DEFAULT_PLAYER_JOURNAL_SETTINGS_FILE = "PlayerJournalSettings.json";
-json JSON;
 
 int main() {
 
+	json JSON;
 	Player player{};
 	Identity identity{};
 	Race race{};
@@ -45,7 +45,7 @@ int main() {
 	}
 	else {
 		std::cout << "Welcome to A Journey for Love" << endl;
-		GetPlayerJournalSetting(player);
+		GetPlayerJournalSetting(player, JSON);
 	}
 	cout << "\nThank you for playing!" << endl;
 }
@@ -57,7 +57,7 @@ void ToUpper(string& oldString) {
 	}
 }
 
-void GetPlayerJournalSetting(Player PLAYER) {
+void GetPlayerJournalSetting(Player PLAYER, json &JSON) {
 	bool playerInputValid{ };
 	string name{};
 	int age{};
