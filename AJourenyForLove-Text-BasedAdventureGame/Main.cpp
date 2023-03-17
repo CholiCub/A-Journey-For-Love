@@ -18,10 +18,11 @@ void GetPlayerJournalSetting();
 bool IsValidIntInEnum(const int numOfItems, int playerInput);
 template <class myType> void PrintQuestionOptions(const int numOfOptions, string(*s)(myType));
 bool ReturningPlayer(Player p);
-const string defaultPlayerJournalSettingsFile = "PlayerJournalSettings.json";
 bool IsFileEmpty(ifstream& pFile);
-Player player{};
-json j;
+
+const string DEFAULT_PLAYER_JOURNAL_SETTINGS_FILE = "PlayerJournalSettings.json";
+Player PLAYER{};
+json JSON;
 
 int main() {
 
@@ -38,9 +39,9 @@ int main() {
 	int likeAnimals{};
 	bool identityValid{};
 
-	if (ReturningPlayer(player)) {
+	if (ReturningPlayer(PLAYER)) {
 		std::cout << "Welcome back to A Journey for Love" << endl;
-		player.PrintPlayerInfo();
+		PLAYER.PrintPlayerInfo();
 	}
 	else {
 		std::cout << "Welcome to A Journey for Love" << endl;
@@ -145,10 +146,10 @@ void GetPlayerJournalSetting() {
 		RaceToString(Race(raceNum)), ReligionToString(Religion(religionNum)), BodyTypeToString(BodyType(bodyTypeNum)),
 		EyeColorToString(EyeColor(eyeColorNum)), HairColorToString(HairColor(hairColorNum)),
 		PartnerPreferenceToString(PartnerPreference(partnerPreferenceNum)));
-	player = createdPlayer;
+	PLAYER = createdPlayer;
 	//Create JSON file to store player data
-	player.ToJson(j, player, defaultPlayerJournalSettingsFile);
-	player.PrintPlayerInfo();
+	PLAYER.ToJson(JSON, PLAYER, DEFAULT_PLAYER_JOURNAL_SETTINGS_FILE);
+	PLAYER.PrintPlayerInfo();
 
 	std::cout << "\nThank you for entering your settings!" << endl;
 }
@@ -167,10 +168,10 @@ bool IsValidIntInEnum(const int numOfItems, int playerInput) {
 }
 bool ReturningPlayer(Player p) {
 	ifstream ifs;
-	ifs.open(defaultPlayerJournalSettingsFile);
+	ifs.open(DEFAULT_PLAYER_JOURNAL_SETTINGS_FILE);
 	json j;
 	if (!IsFileEmpty(ifs)) {
-		player.FromJson(player, defaultPlayerJournalSettingsFile);
+		PLAYER.FromJson(PLAYER, DEFAULT_PLAYER_JOURNAL_SETTINGS_FILE);
 		ifs.close();
 		return true;
 	}
