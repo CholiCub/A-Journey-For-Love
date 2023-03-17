@@ -14,18 +14,18 @@ using json = nlohmann::json;
 using namespace std;
 
 void ToUpper(string& oldString);
-void GetPlayerJournalSetting();
+void GetPlayerJournalSetting(Player PLAYER);
 bool IsValidIntInEnum(const int numOfItems, int playerInput);
 template <class myType> void PrintQuestionOptions(const int numOfOptions, string(*s)(myType));
-bool ReturningPlayer(Player p);
+bool ReturningPlayer(Player& player);
 bool IsFileEmpty(ifstream& pFile);
 
 const string DEFAULT_PLAYER_JOURNAL_SETTINGS_FILE = "PlayerJournalSettings.json";
-Player PLAYER{};
 json JSON;
 
 int main() {
 
+	Player player{};
 	Identity identity{};
 	Race race{};
 	BodyType bodyType{};
@@ -39,13 +39,13 @@ int main() {
 	int likeAnimals{};
 	bool identityValid{};
 
-	if (ReturningPlayer(PLAYER)) {
+	if (ReturningPlayer(player)) {
 		std::cout << "Welcome back to A Journey for Love" << endl;
-		PLAYER.PrintPlayerInfo();
+		player.PrintPlayerInfo();
 	}
 	else {
 		std::cout << "Welcome to A Journey for Love" << endl;
-		GetPlayerJournalSetting();
+		GetPlayerJournalSetting(player);
 	}
 	cout << "\nThank you for playing!" << endl;
 }
@@ -57,7 +57,7 @@ void ToUpper(string& oldString) {
 	}
 }
 
-void GetPlayerJournalSetting() {
+void GetPlayerJournalSetting(Player PLAYER) {
 	bool playerInputValid{ };
 	string name{};
 	int age{};
@@ -166,12 +166,11 @@ bool IsValidIntInEnum(const int numOfItems, int playerInput) {
 	}
 	else return false;
 }
-bool ReturningPlayer(Player p) {
+bool ReturningPlayer(Player &player) {
 	ifstream ifs;
 	ifs.open(DEFAULT_PLAYER_JOURNAL_SETTINGS_FILE);
-	json j;
 	if (!IsFileEmpty(ifs)) {
-		PLAYER.FromJson(PLAYER, DEFAULT_PLAYER_JOURNAL_SETTINGS_FILE);
+		player.FromJson(player, DEFAULT_PLAYER_JOURNAL_SETTINGS_FILE);
 		ifs.close();
 		return true;
 	}
