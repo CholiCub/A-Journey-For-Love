@@ -1,11 +1,11 @@
 #include "PartnerPreference.h"
-string PartnerPreferenceToString(PartnerPreference pp) {
+string PartnerPreferenceToString(EPartnerPreference pp) {
 	switch (pp) {
-	case PartnerPreference::male:
+	case EPartnerPreference::male:
 		return "Male";
-	case PartnerPreference::female:
+	case EPartnerPreference::female:
 		return "Female";
-	case PartnerPreference::both:
+	case EPartnerPreference::both:
 		return "Both male and female";
 	}
 }

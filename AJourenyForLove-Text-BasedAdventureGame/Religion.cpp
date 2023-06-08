@@ -1,37 +1,37 @@
 #include "Religion.h"
-string ReligionToString(Religion r) {
+string ReligionToString(EReligion r) {
 	switch (r) {
-	case Religion::NonReligious:
+	case EReligion::NonReligious:
 		return "Non-Religious";
-	case Religion::Anglican:
+	case EReligion::Anglican:
 		return "Anglican";
-	case Religion::Baptist:
+	case EReligion::Baptist:
 		return "Baptist";
-	case Religion::Buddhist:
+	case EReligion::Buddhist:
 		return "Buddhist";
-	case Religion::Catholic:
+	case EReligion::Catholic:
 		return "Catholic";
-	case Religion::ChristianOther:
+	case EReligion::ChristianOther:
 		return "Christian-Other";
-	case Religion::EasternOrthdox:
+	case EReligion::EasternOrthdox:
 		return "Eastern Orthodox";
-	case Religion::Hindi:
+	case EReligion::Hindi:
 		return "Hindi";
-	case Religion::Jewish:
+	case EReligion::Jewish:
 		return "Jewish";
-	case Religion::Lutheran:
+	case EReligion::Lutheran:
 		return "Lutheran";
-	case Religion::Methodist:
+	case EReligion::Methodist:
 		return "Methodist";
-	case Religion::Mormon:
+	case EReligion::Mormon:
 		return "Mormon";
-	case Religion::Muslim:
+	case EReligion::Muslim:
 		return "Muslim";
-	case Religion::Presbyterian:
+	case EReligion::Presbyterian:
 		return "Prebyterian";
-	case Religion::Spiritual:
+	case EReligion::Spiritual:
 		return "Spiritual";
-	case Religion::Other:
+	case EReligion::Other:
 		return "Other";
 	}
 }

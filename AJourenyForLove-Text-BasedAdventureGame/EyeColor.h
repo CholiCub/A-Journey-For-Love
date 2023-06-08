@@ -4,7 +4,7 @@ using namespace std;
 
 const int NUM_OF_EYE_COLORS = 5;
 
-enum class EyeColor {
+enum class EEyeColor {
 	Brown = 1,
 	Green,
 	Blue,
@@ -12,5 +12,5 @@ enum class EyeColor {
 	Other
 };
 
-string EyeColorToString(EyeColor r);
+string EyeColorToString(EEyeColor r);
 

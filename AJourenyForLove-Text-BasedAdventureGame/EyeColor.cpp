@@ -1,16 +1,16 @@
 #include "EyeColor.h"
 
-string EyeColorToString(EyeColor e) {
+string EyeColorToString(EEyeColor e) {
 	switch (e) {
-	case EyeColor::Brown:
+	case EEyeColor::Brown:
 		return "Brown";
-	case EyeColor::Green:
+	case EEyeColor::Green:
 		return "Green";
-	case EyeColor::Blue:
+	case EEyeColor::Blue:
 		return "Blue";
-	case EyeColor::Hazel:
+	case EEyeColor::Hazel:
 		return "Hazel";
-	case EyeColor::Other:
+	case EEyeColor::Other:
 		return "Other";
 	}
 }

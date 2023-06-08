@@ -3,7 +3,7 @@
 using namespace std;
 const int NUM_OF_RELIGION = 16;
 
-enum class Religion {
+enum class EReligion {
 	NonReligious = 1,
 	Anglican,
 	Baptist,
@@ -21,5 +21,5 @@ enum class Religion {
 	Spiritual,
 	Other
 };
-string ReligionToString(Religion r);
+string ReligionToString(EReligion r);
 

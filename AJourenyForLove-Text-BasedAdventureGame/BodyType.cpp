@@ -1,6 +1,6 @@
 #include"BodyType.h"
 
-string BodyTypeToString(BodyType b) {
+string BodyTypeToString(EBodyType b) {
 	switch (b) {
 	case Thin:
 		return "Thin";

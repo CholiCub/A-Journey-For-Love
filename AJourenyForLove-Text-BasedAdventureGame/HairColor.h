@@ -4,7 +4,7 @@ using namespace std;
 
 const int NUM_OF_HAIR_COLORS = 7;
 
-enum class HairColor {
+enum class EHairColor {
 	NoHair=1,
 	Black,
 	Brown,
@@ -14,4 +14,4 @@ enum class HairColor {
 	Colorful
 };
 
-string HairColorToString(HairColor h);
+string HairColorToString(EHairColor h);

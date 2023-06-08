@@ -3,7 +3,7 @@ using namespace std;
 
 const int NUM_OF_RACES = 10;
 
-enum class Race {
+enum class ERace {
 	AfricanAmerican = 1,
 	Asian,
 	Caucasian,
@@ -15,4 +15,4 @@ enum class Race {
 	Mixed,
 	Other
 };
-string RaceToString(Race r);
+string RaceToString(ERace r);

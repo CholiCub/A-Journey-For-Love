@@ -15,8 +15,8 @@ using namespace std;
 
 void GetPlayerJournalSetting(Player PLAYER, json& JSON);
 bool IsValidIntInEnum(const int numOfItems, int playerInput);
-template <class myType> void PrintQuestionOptions(const int numOfOptions, string(*s)(myType));
-bool ReturningPlayer(Player& player);
+template <class myType> void TPrintQuestionOptions(const int numOfOptions, string(*s)(myType));
+bool IsReturningPlayer(Player& player);
 bool IsFileEmpty(ifstream& pFile);
 
 const string DEFAULT_PLAYER_JOURNAL_SETTINGS_FILE = "PlayerJournalSettings.json";
@@ -25,20 +25,20 @@ int main() {
 
 	json JSON;
 	Player player{};
-	Identity identity{};
-	Race race{};
-	BodyType bodyType{};
-	Religion religion{};
-	HairColor hairColor{};
-	EyeColor eyeColor{};
-	PartnerPreference partnerPreference{};
+	EIdentity identity{};
+	ERace race{};
+	EBodyType bodyType{};
+	EReligion religion{};
+	EHairColor hairColor{};
+	EEyeColor eyeColor{};
+	EPartnerPreference partnerPreference{};
 	int age{};
 	char dash{};
 	int heightInInches{}, bodyTypeNum{};
 	int likeAnimals{};
 	bool identityValid{};
 
-	if (ReturningPlayer(player)) {
+	if (IsReturningPlayer(player)) {
 		std::cout << "Welcome back to A Journey for Love" << endl;
 		player.PrintPlayerInfo();
 	}
@@ -72,7 +72,7 @@ void GetPlayerJournalSetting(Player PLAYER, json &JSON) {
 
 	do {
 		std::cout << "Enter the identity you best identify with: " << endl;
-		PrintQuestionOptions(NUM_OF_IDENTITIES, IdentityToString);
+		TPrintQuestionOptions(NUM_OF_IDENTITIES, IdentityToString);
 		std::cin >> identityNum;
 		IsIdenityValid = IsValidIntInEnum(NUM_OF_IDENTITIES, identityNum);
 		if (!IsIdenityValid) {
@@ -81,7 +81,7 @@ void GetPlayerJournalSetting(Player PLAYER, json &JSON) {
 	} while (!IsIdenityValid);
 	do {
 		std::cout << "Enter the race you best identify with: " << endl;
-		PrintQuestionOptions(NUM_OF_RACES, RaceToString);
+		TPrintQuestionOptions(NUM_OF_RACES, RaceToString);
 		std::cin >> raceNum;
 		IsRaceValid = IsValidIntInEnum(NUM_OF_RACES, raceNum);
 		if (!IsRaceValid) {
@@ -90,7 +90,7 @@ void GetPlayerJournalSetting(Player PLAYER, json &JSON) {
 	} while (!IsRaceValid);
 	do {
 		std::cout << "Enter the body type that best describes you: " << endl;
-		PrintQuestionOptions(NUM_OF_BODY_TYPES, BodyTypeToString);
+		TPrintQuestionOptions(NUM_OF_BODY_TYPES, BodyTypeToString);
 		std::cin >> bodyTypeNum;
 		IsBodyTypeValid = IsValidIntInEnum(NUM_OF_BODY_TYPES, bodyTypeNum);
 		if (!IsBodyTypeValid) {
@@ -99,7 +99,7 @@ void GetPlayerJournalSetting(Player PLAYER, json &JSON) {
 	} while (!IsBodyTypeValid);
 	do {
 		std::cout << "Enter the religion that best describes you: " << endl;
-		PrintQuestionOptions(NUM_OF_RELIGION, ReligionToString);
+		TPrintQuestionOptions(NUM_OF_RELIGION, ReligionToString);
 		std::cin >> religionNum;
 		IsReligionValid = IsValidIntInEnum(NUM_OF_RELIGION, religionNum);
 		if (!IsBodyTypeValid) {
@@ -108,7 +108,7 @@ void GetPlayerJournalSetting(Player PLAYER, json &JSON) {
 	} while (!IsReligionValid);
 	do {
 		std::cout << "Enter your partner preference: " << endl;
-		PrintQuestionOptions(NUM_OF_PARTNER_PREFERENCE, PartnerPreferenceToString);
+		TPrintQuestionOptions(NUM_OF_PARTNER_PREFERENCE, PartnerPreferenceToString);
 		std::cin >> partnerPreferenceNum;
 		IsPartnerPreferenceValid = IsValidIntInEnum(NUM_OF_PARTNER_PREFERENCE, partnerPreferenceNum);
 		if (!IsPartnerPreferenceValid) {
@@ -117,7 +117,7 @@ void GetPlayerJournalSetting(Player PLAYER, json &JSON) {
 	} while (!IsPartnerPreferenceValid);
 	do {
 		std::cout << "Enter your eye color: " << endl;
-		PrintQuestionOptions(NUM_OF_EYE_COLORS, EyeColorToString);
+		TPrintQuestionOptions(NUM_OF_EYE_COLORS, EyeColorToString);
 		std::cin >> eyeColorNum;
 		IsEyeColorValid = IsValidIntInEnum(NUM_OF_EYE_COLORS, eyeColorNum);
 		if (!IsEyeColorValid) {
@@ -126,7 +126,7 @@ void GetPlayerJournalSetting(Player PLAYER, json &JSON) {
 	} while (!IsEyeColorValid);
 	do {
 		std::cout << "Enter your hair color: " << endl;
-		PrintQuestionOptions(NUM_OF_HAIR_COLORS, HairColorToString);
+		TPrintQuestionOptions(NUM_OF_HAIR_COLORS, HairColorToString);
 		std::cin >> hairColorNum;
 		IsHairColorValid = IsValidIntInEnum(NUM_OF_HAIR_COLORS, hairColorNum);
 		if (!IsHairColorValid) {
@@ -134,10 +134,10 @@ void GetPlayerJournalSetting(Player PLAYER, json &JSON) {
 		}
 	} while (!IsHairColorValid);
 
-	Player createdPlayer(name, age, IdentityToString(Identity(identityNum)),
-		RaceToString(Race(raceNum)), ReligionToString(Religion(religionNum)), BodyTypeToString(BodyType(bodyTypeNum)),
-		EyeColorToString(EyeColor(eyeColorNum)), HairColorToString(HairColor(hairColorNum)),
-		PartnerPreferenceToString(PartnerPreference(partnerPreferenceNum)));
+	Player createdPlayer(name, age, IdentityToString(EIdentity(identityNum)),
+		RaceToString(ERace(raceNum)), ReligionToString(EReligion(religionNum)), BodyTypeToString(EBodyType(bodyTypeNum)),
+		EyeColorToString(EEyeColor(eyeColorNum)), HairColorToString(EHairColor(hairColorNum)),
+		PartnerPreferenceToString(EPartnerPreference(partnerPreferenceNum)));
 	PLAYER = createdPlayer;
 	//Create JSON file to store player data
 	PLAYER.ToJson(JSON, PLAYER, DEFAULT_PLAYER_JOURNAL_SETTINGS_FILE);
@@ -146,7 +146,7 @@ void GetPlayerJournalSetting(Player PLAYER, json &JSON) {
 	std::cout << "\nThank you for entering your settings!" << endl;
 }
 
-template <class myType> void PrintQuestionOptions(const int numOfOptions, string(*s)(myType)) {
+template <class myType> void TPrintQuestionOptions(const int numOfOptions, string(*s)(myType)) {
 	for (int i = 1; i <= numOfOptions; i++) {
 		std::cout << i << "." << s(myType(i)) << endl;
 	}
@@ -158,7 +158,7 @@ bool IsValidIntInEnum(const int numOfItems, int playerInput) {
 	}
 	else return false;
 }
-bool ReturningPlayer(Player &player) {
+bool IsReturningPlayer(Player &player) {
 	ifstream ifs;
 	ifs.open(DEFAULT_PLAYER_JOURNAL_SETTINGS_FILE);
 	if (!IsFileEmpty(ifs)) {
