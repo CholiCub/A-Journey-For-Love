@@ -13,7 +13,6 @@ using json = nlohmann::json;
 
 using namespace std;
 
-void ToUpper(string& oldString);
 void GetPlayerJournalSetting(Player PLAYER, json& JSON);
 bool IsValidIntInEnum(const int numOfItems, int playerInput);
 template <class myType> void PrintQuestionOptions(const int numOfOptions, string(*s)(myType));
@@ -48,13 +47,6 @@ int main() {
 		GetPlayerJournalSetting(player, JSON);
 	}
 	cout << "\nThank you for playing!" << endl;
-}
-
-void ToUpper(string& oldString) {
-	getline(std::cin, oldString);
-	for (int i = 0; i < oldString.length(); i++) {
-		oldString[i] = toupper(oldString[i]);
-	}
 }
 
 void GetPlayerJournalSetting(Player PLAYER, json &JSON) {
