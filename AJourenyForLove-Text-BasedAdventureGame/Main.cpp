@@ -16,7 +16,7 @@ using namespace std;
 void GetPlayerJournalSetting(Player PLAYER, json& JSON);
 bool IsValidIntInEnum(const int numOfItems, int playerInput);
 template <class myType> void TPrintQuestionOptions(const int numOfOptions, string(*s)(myType));
-bool IsReturningPlayer(Player& player);
+bool IsReturningPlayer();
 bool IsFileEmpty(ifstream& pFile);
 
 const string DEFAULT_PLAYER_JOURNAL_SETTINGS_FILE = "PlayerJournalSettings.json";
@@ -38,8 +38,9 @@ int main() {
 	int likeAnimals{};
 	bool identityValid{};
 
-	if (IsReturningPlayer(player)) {
+	if (IsReturningPlayer()) {
 		std::cout << "Welcome back to A Journey for Love" << endl;
+		player.FromJson(player, DEFAULT_PLAYER_JOURNAL_SETTINGS_FILE);
 		player.PrintPlayerInfo();
 	}
 	else {
@@ -158,11 +159,10 @@ bool IsValidIntInEnum(const int numOfItems, int playerInput) {
 	}
 	else return false;
 }
-bool IsReturningPlayer(Player &player) {
+bool IsReturningPlayer() {
 	ifstream ifs;
 	ifs.open(DEFAULT_PLAYER_JOURNAL_SETTINGS_FILE);
 	if (!IsFileEmpty(ifs)) {
-		player.FromJson(player, DEFAULT_PLAYER_JOURNAL_SETTINGS_FILE);
 		ifs.close();
 		return true;
 	}
