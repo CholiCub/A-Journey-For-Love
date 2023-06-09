@@ -13,7 +13,7 @@ using json = nlohmann::json;
 
 using namespace std;
 
-void GetPlayerJournalSetting(Player PLAYER, json& JSON);
+void CreateNewPlayer(json& JSON);
 bool IsValidIntInEnum(const int numOfItems, int playerInput);
 template <class myType> void TPrintQuestionOptions(const int numOfOptions, string(*s)(myType));
 bool IsReturningPlayer();
@@ -45,23 +45,15 @@ int main() {
 	}
 	else {
 		std::cout << "Welcome to A Journey for Love" << endl;
-		GetPlayerJournalSetting(player, JSON);
+		CreateNewPlayer(JSON);
 	}
 	cout << "\nThank you for playing!" << endl;
 }
 
-void GetPlayerJournalSetting(Player PLAYER, json &JSON) {
-	bool playerInputValid{ };
+void CreateNewPlayer( json& JSON) {
 	string name{};
-	int age{};
-	int identityNum{}, raceNum{}, bodyTypeNum{}, religionNum{}, hairColorNum{}, eyeColorNum{}, partnerPreferenceNum{};
-	bool IsIdenityValid{};
-	bool IsRaceValid{};
-	bool IsBodyTypeValid{};
-	bool IsReligionValid{};
-	bool IsEyeColorValid{};
-	bool IsHairColorValid{};
-	bool IsPartnerPreferenceValid{};
+	int age{}, identityNum{}, raceNum{}, bodyTypeNum{}, religionNum{}, hairColorNum{}, eyeColorNum{}, partnerPreferenceNum{};
+	bool IsIdenityValid{}, IsRaceValid{}, IsBodyTypeValid{}, IsReligionValid{}, IsEyeColorValid{}, IsHairColorValid{}, IsPartnerPreferenceValid{};
 
 	std::cout << "\nEnter first name: ";
 	getline(std::cin, name);
@@ -139,11 +131,9 @@ void GetPlayerJournalSetting(Player PLAYER, json &JSON) {
 		RaceToString(ERace(raceNum)), ReligionToString(EReligion(religionNum)), BodyTypeToString(EBodyType(bodyTypeNum)),
 		EyeColorToString(EEyeColor(eyeColorNum)), HairColorToString(EHairColor(hairColorNum)),
 		PartnerPreferenceToString(EPartnerPreference(partnerPreferenceNum)));
-	PLAYER = createdPlayer;
 	//Create JSON file to store player data
-	PLAYER.ToJson(JSON, PLAYER, DEFAULT_PLAYER_JOURNAL_SETTINGS_FILE);
-	PLAYER.PrintPlayerInfo();
-
+	createdPlayer.ToJson(JSON, createdPlayer, DEFAULT_PLAYER_JOURNAL_SETTINGS_FILE);
+	createdPlayer.PrintPlayerInfo();
 	std::cout << "\nThank you for entering your settings!" << endl;
 }
 
