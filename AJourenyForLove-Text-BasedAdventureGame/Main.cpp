@@ -25,18 +25,6 @@ int main() {
 
 	json JSON;
 	Player player{};
-	EIdentity identity{};
-	ERace race{};
-	EBodyType bodyType{};
-	EReligion religion{};
-	EHairColor hairColor{};
-	EEyeColor eyeColor{};
-	EPartnerPreference partnerPreference{};
-	int age{};
-	char dash{};
-	int heightInInches{}, bodyTypeNum{};
-	int likeAnimals{};
-	bool identityValid{};
 
 	if (IsReturningPlayer()) {
 		std::cout << "Welcome back to A Journey for Love" << endl;
