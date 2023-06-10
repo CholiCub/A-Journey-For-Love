@@ -1,12 +1,18 @@
 #pragma once
+#include"Properties.h"
 #include<string>
-using namespace std;
-const int NUM_OF_PARTNER_PREFERENCE = 3;
+#include<iostream>
+
 enum class EPartnerPreference {
 	male = 1,
 	female,
 	both
 };
-string PartnerPreferenceToString(EPartnerPreference pp);
 
-
+class PartnerPreference : public Properties{
+	const int NUM_OF_OPTIONS = 3;
+public:
+	std::string ToString(EPartnerPreference pp);
+	void DisplayOptions() override;
+	bool IsValidIntInEnum(int playerInput) override;
+};

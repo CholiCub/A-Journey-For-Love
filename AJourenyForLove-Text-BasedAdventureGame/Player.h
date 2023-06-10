@@ -2,43 +2,55 @@
 #include <string>
 #include <fstream>
 #include <iostream>
+#include "Identity.h"
+#include "Race.h"
+#include "Religion.h"
+#include "BodyType.h"
+#include "HairColor.h"
+#include "EyeColor.h"
+#include "PartnerPreference.h"
 #include <nlohmann/json.hpp>
 using json = nlohmann::json;
-
 using namespace std;
 
 class Player {
 private:
-	string name , identity, race, bodyType, religion, hairColor, eyeColor, partnerPreference;
+	std::string name; 
 	int age;
+	EIdentity identity;
+	ERace race;
+	EReligion religion;
+	EBodyType bodyType;
+	EHairColor hairColor;
+	EEyeColor eyeColor;
+	EPartnerPreference partnerPreference;
 
 public:
 	Player();
-	Player(string name, int age, string identity, string race, string religion, string bodyType, string hairColor, string eyeColor, string partnerPreference);
+	Player(std::string name, int age, EIdentity identity, ERace race, EReligion religion, EBodyType bodyType, EHairColor hairColor, EEyeColor eyeColor, EPartnerPreference partnerPreference);
 	
 	void PrintPlayerInfo();
 
-	string getName() const;
+	std::string getName() const;
 	void setName(const std::string& newName);
 	int getAge() const;
 	void setAge(int newAge);
-	string getIdentity() const;
-	void setIdentity(const string& newIdentity);
-	string getRace() const;
-	void setRace(const string& newRace);
-	string getReligion() const;
-	void setReligion(const string& newReligion);
-	string getBodyType() const;
-	void setBodyType(const string& newBodyType);
-	string getHairColor() const;
-	void setHairColor (const string& newHairColor);
-	string getEyeColor() const;
-	void setEyeColor(const string& newEyeColor);
-	string getPartnerPreference() const;
-	void setPartnerPreference(const string& newPartnerPreference);
-
+	EIdentity getIdentity() const;
+	void setIdentity(const EIdentity& newIdentity);
+	ERace getRace() const;
+	void setRace(const ERace& newRace);
+	EReligion getReligion() const;
+	void setReligion(const EReligion& newReligion);
+	EBodyType getBodyType() const;
+	void setBodyType(const EBodyType& newBodyType);
+	EHairColor getHairColor() const;
+	void setHairColor (const EHairColor& newHairColor);
+	EEyeColor getEyeColor() const;
+	void setEyeColor(const EEyeColor& newEyeColor);
+	EPartnerPreference getPartnerPreference() const;
+	void setPartnerPreference(const EPartnerPreference& newPartnerPreference);
+	
 	//json serialization
 	void FromJson(Player& p, const string dfile);
 	void ToJson(nlohmann::json& j, const Player& p, const string dfile);
-	};
-
+};

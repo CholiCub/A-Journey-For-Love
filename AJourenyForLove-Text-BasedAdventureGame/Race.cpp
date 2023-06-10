@@ -1,6 +1,6 @@
 #include "Race.h"
 
-string RaceToString(ERace r) {
+std::string Race::ToString(ERace r) {
 	switch (r) {
 	case ERace::AfricanAmerican:
 		return "African American";
@@ -23,4 +23,15 @@ string RaceToString(ERace r) {
 	case ERace::Other:
 		return "Other";
 	}
+}
+
+void Race::DisplayOptions() {
+	for (int i = 1; i <= NUM_OF_OPTIONS; i++) {
+		std::cout << i << "." << ToString(ERace(i)) << std::endl;
+	}
+}
+
+bool Race::IsValidIntInEnum(int playerInput) {
+	if (playerInput > 0 && playerInput <= NUM_OF_OPTIONS) return true;
+	else return false;
 }

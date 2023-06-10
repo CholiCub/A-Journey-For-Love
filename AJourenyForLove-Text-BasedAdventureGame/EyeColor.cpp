@@ -1,6 +1,6 @@
 #include "EyeColor.h"
 
-string EyeColorToString(EEyeColor e) {
+std::string EyeColor::ToString(EEyeColor e) {
 	switch (e) {
 	case EEyeColor::Brown:
 		return "Brown";
@@ -13,4 +13,15 @@ string EyeColorToString(EEyeColor e) {
 	case EEyeColor::Other:
 		return "Other";
 	}
+}
+
+void EyeColor::DisplayOptions() {
+	for (int i = 1; i <= NUM_OF_OPTIONS; i++) {
+		std::cout << i << "." << ToString(EEyeColor(i)) << std::endl;
+	}
+}
+
+bool EyeColor::IsValidIntInEnum(int playerInput) {
+	if (playerInput > 0 && playerInput <= NUM_OF_OPTIONS) return true;
+	else return false;
 }

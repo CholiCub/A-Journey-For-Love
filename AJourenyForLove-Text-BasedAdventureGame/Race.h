@@ -1,7 +1,7 @@
+#pragma once
+#include"Properties.h"
 #include<string>
-using namespace std;
-
-const int NUM_OF_RACES = 10;
+#include<iostream>
 
 enum class ERace {
 	AfricanAmerican = 1,
@@ -15,4 +15,11 @@ enum class ERace {
 	Mixed,
 	Other
 };
-string RaceToString(ERace r);
+
+class Race : public Properties{
+	const int NUM_OF_OPTIONS = 10;
+public:
+	std::string ToString(ERace r);
+	void DisplayOptions() override;
+	bool IsValidIntInEnum(int playerInput);
+};

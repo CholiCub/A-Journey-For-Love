@@ -1,7 +1,7 @@
 #pragma once
+#include"Properties.h"
 #include<string>
-using namespace std;
-const int NUM_OF_RELIGION = 16;
+#include<iostream>
 
 enum class EReligion {
 	NonReligious = 1,
@@ -21,5 +21,11 @@ enum class EReligion {
 	Spiritual,
 	Other
 };
-string ReligionToString(EReligion r);
 
+class Religion : public Properties {
+	const int NUM_OF_OPTIONS = 16;
+public:
+	std::string ToString(EReligion r);
+	void DisplayOptions() override;
+	bool IsValidIntInEnum(int playerInput) override;
+};

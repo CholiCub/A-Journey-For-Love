@@ -1,8 +1,7 @@
+#pragma once
+#include"Properties.h"
 #include<string>
-using namespace std;
-
-
-const int NUM_OF_IDENTITIES = 7;
+#include<iostream>
 
 enum class EIdentity {
 	Man = 1,
@@ -13,4 +12,11 @@ enum class EIdentity {
 	TransMan,
 	NonBinary
 };
-string IdentityToString(EIdentity i);
+
+class Identity : public Properties {
+	const int NUM_OF_OPTIONS = 7;
+public:
+	std::string ToString(EIdentity i);
+	void DisplayOptions() override;
+	bool IsValidIntInEnum(int playerInput) override;
+};

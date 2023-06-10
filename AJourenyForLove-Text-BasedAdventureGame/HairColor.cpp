@@ -1,5 +1,6 @@
 #include "HairColor.h"
-string HairColorToString(EHairColor h) {
+
+std::string HairColor::ToString(EHairColor h) {
 	switch (h) {
 	case EHairColor::NoHair:
 		return "No hair/ Bald";
@@ -16,4 +17,15 @@ string HairColorToString(EHairColor h) {
 	case EHairColor::Colorful:
 		return "Colorful";
 	}
+}
+
+void HairColor::DisplayOptions() {
+	for (int i = 1; i <= NUM_OF_OPTIONS; i++) {
+		std::cout << i << "." << ToString(EHairColor(i)) << std::endl;
+	}
+}
+
+bool HairColor::IsValidIntInEnum(int playerInput) {
+	if (playerInput > 0 && playerInput <= NUM_OF_OPTIONS) return true;
+	else return false;
 }

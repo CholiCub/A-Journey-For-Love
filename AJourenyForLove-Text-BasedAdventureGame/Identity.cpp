@@ -1,6 +1,6 @@
 #include "Identity.h"
 
-string IdentityToString(EIdentity i) {
+std::string Identity::ToString(EIdentity i) {
 	switch (i) {
 	case EIdentity::Man:
 		return "Man";
@@ -17,4 +17,15 @@ string IdentityToString(EIdentity i) {
 	case EIdentity::NonBinary:
 		return "Non-Binary";
 	}
+}
+
+void Identity::DisplayOptions() {
+	for (int i = 1; i <= NUM_OF_OPTIONS; i++) {
+		std::cout << i << "." << ToString(EIdentity(i)) << std::endl;
+	}
+}
+
+bool Identity::IsValidIntInEnum(int playerInput) {
+	if (playerInput > 0 && playerInput <= NUM_OF_OPTIONS) return true;
+	else return false;
 }

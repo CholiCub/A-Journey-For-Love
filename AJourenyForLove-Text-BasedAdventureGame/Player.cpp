@@ -13,7 +13,7 @@ Player::Player() {
 	partnerPreference = {};
 }
 
-Player::Player(string name, int age, string identity, string race, string religion, string bodyType, string hairColor, string eyeColor, string partnerPreference) {
+Player::Player(string name, int age, EIdentity identity, ERace race, EReligion religion, EBodyType bodyType, EHairColor hairColor, EEyeColor eyeColor, EPartnerPreference partnerPreference) {
 	this->name = name;
 	this->age = age;
 	this->identity = identity;
@@ -26,17 +26,24 @@ Player::Player(string name, int age, string identity, string race, string religi
 }
 
 void Player::PrintPlayerInfo() {
+	Identity id;
+	Race ra;
+	Religion re;
+	BodyType bt;
+	HairColor hc;
+	EyeColor ec;
+	PartnerPreference pp;
 	std::cout << "Your Settings: " << endl;
 	std::cout << "---------------------------------"<< endl;
 	std::cout << "Name: " << name << endl;
 	std::cout << "Age: " << age << endl;
-	std::cout << "Identity: " << identity << endl;
-	std::cout << "Race: " << race << endl;
-	std::cout << "Religion: " << religion << endl;
-	std::cout << "BodyType: " << bodyType << endl;
-	std::cout << "EyeColor: " << eyeColor << endl;
-	std::cout << "HairColor: " << hairColor << endl;
-	std::cout << "PartnerPreference: " << partnerPreference << endl;
+	std::cout << "Identity: " << id.ToString(identity) << endl;
+	std::cout << "Race: " << ra.ToString(race) << endl;
+	std::cout << "Religion: " << re.ToString(religion) << endl;
+	std::cout << "BodyType: " << bt.ToString(bodyType) << endl;
+	std::cout << "EyeColor: " << ec.ToString(eyeColor) << endl;
+	std::cout << "HairColor: " << hc.ToString(hairColor) << endl;
+	std::cout << "PartnerPreference: " << pp.ToString(partnerPreference) << endl;
 }
 
 string Player::getName() const {
@@ -55,59 +62,59 @@ void Player::setAge(int newAge) {
 	this->age = newAge;
 }
 
-string Player::getIdentity() const {
+EIdentity Player::getIdentity() const {
 	return this->identity;
 }
 
-void Player::setIdentity(const string& newIdentity) {
+void Player::setIdentity(const EIdentity& newIdentity) {
 	this->identity = newIdentity;
 }
 
-string Player::getRace() const {
+ERace Player::getRace() const {
 	return this->race;
 }
 
-void Player::setRace(const string& newRace) {
+void Player::setRace(const ERace& newRace) {
 	this->race = newRace;
 }
 
-string Player::getReligion() const {
+EReligion Player::getReligion() const {
 	return this->religion;
 }
 
-void Player::setReligion(const string& newReligion) {
+void Player::setReligion(const EReligion& newReligion) {
 	this->religion = newReligion;
 }
 
-string Player::getBodyType() const {
+EBodyType Player::getBodyType() const {
 	return this->bodyType;
 }
 
-void Player::setBodyType(const string& newBodyType) {
+void Player::setBodyType(const EBodyType& newBodyType) {
 	this->bodyType = newBodyType;
 }
 
-string Player::getHairColor() const {
+EHairColor Player::getHairColor() const {
 	return this->hairColor;
 }
 
-void Player::setHairColor(const string& newHairColor) {
+void Player::setHairColor(const EHairColor& newHairColor) {
 	this->hairColor = newHairColor;
 }
 
-string Player::getEyeColor() const {
+EEyeColor Player::getEyeColor() const {
 	return this->eyeColor;
 }
 
-void Player::setEyeColor(const string& newEyeColor) {
+void Player::setEyeColor(const EEyeColor& newEyeColor) {
 	this->eyeColor = newEyeColor;
 }
 
-string Player::getPartnerPreference() const {
+EPartnerPreference Player::getPartnerPreference() const {
 	return this->partnerPreference;
 }
 
-void Player::setPartnerPreference(const string& newPartnerPreference) {
+void Player::setPartnerPreference(const EPartnerPreference& newPartnerPreference) {
 	this->partnerPreference = newPartnerPreference;
 }
 
@@ -118,13 +125,13 @@ void Player::FromJson(Player& p, const string dfile) {
 
 	p.setName(data.at("Name").get<string>());
 	p.setAge((data.at("Age").get<int>()));
-	p.setIdentity(data.at("Identity").get<string>());
-	p.setRace(data.at("Race").get<string>());
-	p.setReligion(data.at("Religion").get<string>());
-	p.setBodyType(data.at("BodyType").get<string>());
-	p.setEyeColor(data.at("EyeColor").get<string>());
-	p.setHairColor(data.at("HairColor").get<string>());
-	p.setPartnerPreference(data.at("PartnerPreference").get<string>());
+	p.setIdentity(data.at("Identity").get<EIdentity>());
+	p.setRace(data.at("Race").get<ERace>());
+	p.setReligion(data.at("Religion").get<EReligion>());
+	p.setBodyType(data.at("BodyType").get<EBodyType>());
+	p.setEyeColor(data.at("EyeColor").get<EEyeColor>());
+	p.setHairColor(data.at("HairColor").get<EHairColor>());
+	p.setPartnerPreference(data.at("PartnerPreference").get<EPartnerPreference>());
 	ifs.close();
 }
 

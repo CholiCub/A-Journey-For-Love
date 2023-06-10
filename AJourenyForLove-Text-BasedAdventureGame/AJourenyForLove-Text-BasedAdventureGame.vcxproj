@@ -148,6 +148,7 @@
     <ClInclude Include="Identity.h" />
     <ClInclude Include="PartnerPreference.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="Properties.h" />
     <ClInclude Include="Race.h" />
     <ClInclude Include="Religion.h" />
   </ItemGroup>

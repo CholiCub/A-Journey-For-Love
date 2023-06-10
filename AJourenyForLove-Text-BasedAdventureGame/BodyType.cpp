@@ -1,16 +1,27 @@
 #include"BodyType.h"
 
-string BodyTypeToString(EBodyType b) {
+std::string BodyType::ToString(EBodyType b) {
 	switch (b) {
-	case Thin:
+	case EBodyType::Thin:
 		return "Thin";
-	case Athletic:
+	case EBodyType::Athletic:
 		return "Athletic";
-	case Average:
+	case EBodyType::Average:
 		return "Average";
-	case AFewExtra:
+	case EBodyType::AFewExtra:
 		return "A Few Extra Pounds";
-	case BigTallOrBBW:
+	case EBodyType::BigTallOrBBW:
 		return "Big / Tall or BBW";
 	}
+}
+
+void BodyType::DisplayOptions() {
+	for (int i = 1; i <= NUM_OF_OPTIONS; i++) {
+		std::cout << i << "." << ToString(EBodyType(i)) << std::endl;
+	}
+}
+
+bool BodyType::IsValidIntInEnum(int playerInput) {
+	if (playerInput > 0 && playerInput <= NUM_OF_OPTIONS) return true;
+	else return false;
 }

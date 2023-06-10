@@ -1,5 +1,6 @@
 #include "Religion.h"
-string ReligionToString(EReligion r) {
+
+std::string Religion::ToString(EReligion r) {
 	switch (r) {
 	case EReligion::NonReligious:
 		return "Non-Religious";
@@ -35,3 +36,15 @@ string ReligionToString(EReligion r) {
 		return "Other";
 	}
 }
+
+void Religion::DisplayOptions() {
+	for (int i = 1; i <= NUM_OF_OPTIONS; i++) {
+		std::cout << i << "." << ToString(EReligion(i)) << std::endl;
+	}
+}
+
+bool Religion::IsValidIntInEnum(int playerInput) {
+	if (playerInput > 0 && playerInput <= NUM_OF_OPTIONS) return true;
+	else return false;
+}
+
