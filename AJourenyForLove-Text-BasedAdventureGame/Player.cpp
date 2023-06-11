@@ -117,37 +117,3 @@ EPartnerPreference Player::getPartnerPreference() const {
 void Player::setPartnerPreference(const EPartnerPreference& newPartnerPreference) {
 	this->partnerPreference = newPartnerPreference;
 }
-
-void Player::FromJson(Player& p, const string dfile) {
-	ifstream ifs;
-	ifs.open(dfile);
-	json data = json::parse(ifs);
-
-	p.setName(data.at("Name").get<string>());
-	p.setAge((data.at("Age").get<int>()));
-	p.setIdentity(data.at("Identity").get<EIdentity>());
-	p.setRace(data.at("Race").get<ERace>());
-	p.setReligion(data.at("Religion").get<EReligion>());
-	p.setBodyType(data.at("BodyType").get<EBodyType>());
-	p.setEyeColor(data.at("EyeColor").get<EEyeColor>());
-	p.setHairColor(data.at("HairColor").get<EHairColor>());
-	p.setPartnerPreference(data.at("PartnerPreference").get<EPartnerPreference>());
-	ifs.close();
-}
-
-void Player::ToJson(nlohmann::json& j, const Player& p, const string dfile) {
-	ofstream ofs;
-	ofs.open(dfile);
-
-	j["Name"] = p.getName();
-	j["Age"] = p.getAge();
-	j["Identity"] = p.getIdentity();
-	j["Race"] = p.getRace();
-	j["Religion"] = p.getReligion();
-	j["BodyType"] = p.getBodyType();
-	j["EyeColor"] = p.getEyeColor();
-	j["HairColor"] = p.getHairColor();
-	j["PartnerPreference"] = p.getPartnerPreference();
-	ofs << j;
-	ofs.close();
-}

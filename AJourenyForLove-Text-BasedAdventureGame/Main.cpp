@@ -9,35 +9,30 @@
 #include "PartnerPreference.h"
 #include "Player.h"
 #include "Properties.h"
-#include <nlohmann/json.hpp>
-using json = nlohmann::json;
+#include "JsonPersistence.h"
 
 using namespace std;
 
-void CreateNewPlayer(json& JSON);
+void CreateNewPlayer();
 bool IsReturningPlayer();
-bool IsFileEmpty(ifstream& pFile);
 int GetPlayerSettings(Properties* pp);
-
-const string DEFAULT_PLAYER_JOURNAL_SETTINGS_FILE = "PlayerJournalSettings.json";
 
 int main() {
 
-	json JSON;
-	Player player{};
-	
+	JsonPersistence jp;
+
 	if (IsReturningPlayer()) {
 		std::cout << "Welcome back to A Journey for Love" << endl;
-		player.FromJson(player, DEFAULT_PLAYER_JOURNAL_SETTINGS_FILE);
+		Player player = jp.read();
 		player.PrintPlayerInfo();
 	}
 	else {
 		std::cout << "Welcome to A Journey for Love" << endl;
-		CreateNewPlayer(JSON);
+		CreateNewPlayer();
 	}
 	cout << "\nThank you for playing!" << endl;
 }
-void CreateNewPlayer(json& JSON) {
+void CreateNewPlayer() {
 	string name{};
 	int age{};
 	std::cout << "\nEnter first name: ";
@@ -63,27 +58,17 @@ void CreateNewPlayer(json& JSON) {
 	int pp = GetPlayerSettings(&partnerPreference);
 
 	Player createdPlayer(name, age, (EIdentity(id)), (ERace(ra)), (EReligion(re)), (EBodyType(bt)), (EHairColor(hc)), (EEyeColor(ec)), (EPartnerPreference(pp)));
-	//Create JSON file to store player data
-	createdPlayer.ToJson(JSON, createdPlayer, DEFAULT_PLAYER_JOURNAL_SETTINGS_FILE);
+	JsonPersistence jp;
+	jp.save(createdPlayer);
 	createdPlayer.PrintPlayerInfo();
+
 	std::cout << "\nThank you for entering your settings!" << endl;
 }
 
 bool IsReturningPlayer() {
-	ifstream ifs;
-	ifs.open(DEFAULT_PLAYER_JOURNAL_SETTINGS_FILE);
-	if (!IsFileEmpty(ifs)) {
-		ifs.close();
-		return true;
-	}
-	else {
-		ifs.close();
-		return false;
-	}
-}
-
-bool IsFileEmpty(ifstream& pFile) {
-	return pFile.peek() == ifstream::traits_type::eof();
+	JsonPersistence jp;
+	if (!jp.IsFileEmpty()) return true;
+	else return false;	
 }
 
 int GetPlayerSettings(Properties* pp) {

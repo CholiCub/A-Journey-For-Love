@@ -1,6 +1,5 @@
 #pragma once
 #include <string>
-#include <fstream>
 #include <iostream>
 #include "Identity.h"
 #include "Race.h"
@@ -9,8 +8,7 @@
 #include "HairColor.h"
 #include "EyeColor.h"
 #include "PartnerPreference.h"
-#include <nlohmann/json.hpp>
-using json = nlohmann::json;
+
 using namespace std;
 
 class Player {
@@ -50,7 +48,4 @@ public:
 	EPartnerPreference getPartnerPreference() const;
 	void setPartnerPreference(const EPartnerPreference& newPartnerPreference);
 	
-	//json serialization
-	void FromJson(Player& p, const string dfile);
-	void ToJson(nlohmann::json& j, const Player& p, const string dfile);
 };
