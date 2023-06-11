@@ -132,27 +132,37 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BodyType.cpp" />
+    <ClCompile Include="Date.cpp" />
     <ClCompile Include="EyeColor.cpp" />
     <ClCompile Include="HairColor.cpp" />
     <ClCompile Include="Identity.cpp" />
     <ClCompile Include="PlayerPersistence.cpp" />
+    <ClCompile Include="Intention.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="PartnerPreference.cpp" />
+    <ClCompile Include="Person.cpp" />
+    <ClCompile Include="PersonalityType.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Properties.cpp" />
     <ClCompile Include="Race.cpp" />
+    <ClCompile Include="RelationshipLevel.cpp" />
     <ClCompile Include="Religion.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BodyType.h" />
+    <ClInclude Include="Date.h" />
     <ClInclude Include="EyeColor.h" />
     <ClInclude Include="HairColor.h" />
     <ClInclude Include="Identity.h" />
     <ClInclude Include="PlayerPersistence.h" />
     <ClInclude Include="PartnerPreference.h" />
+    <ClInclude Include="Intention.h" />
+    <ClInclude Include="Person.h" />
+    <ClInclude Include="PersonalityType.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Properties.h" />
     <ClInclude Include="Race.h" />
+    <ClInclude Include="RelationshipLevel.h" />
     <ClInclude Include="Religion.h" />
   </ItemGroup>
   <ItemGroup>
