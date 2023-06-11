@@ -14,14 +14,13 @@
 using namespace std;
 
 void CreateNewPlayer();
-bool IsReturningPlayer();
 int GetPlayerSettings(Properties* pp);
 
 int main() {
 
 	JsonPersistence jp;
 
-	if (IsReturningPlayer()) {
+	if (jp.IsFileEmpty()) {
 		cout << "Welcome back to A Journey for Love" << endl;
 		Player player = jp.read();
 	}
@@ -62,12 +61,6 @@ void CreateNewPlayer() {
 	createdPlayer.PrintPlayerInfo();
 
 	cout << "\nThank you for entering your settings!" << endl;
-}
-
-bool IsReturningPlayer() {
-	JsonPersistence jp;
-	if (!jp.IsFileEmpty()) return true;
-	else return false;	
 }
 
 int GetPlayerSettings(Properties* pp) {
