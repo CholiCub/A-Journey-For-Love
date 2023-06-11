@@ -135,6 +135,7 @@
     <ClCompile Include="EyeColor.cpp" />
     <ClCompile Include="HairColor.cpp" />
     <ClCompile Include="Identity.cpp" />
+    <ClCompile Include="JsonPersistence.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="PartnerPreference.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -146,7 +147,9 @@
     <ClInclude Include="EyeColor.h" />
     <ClInclude Include="HairColor.h" />
     <ClInclude Include="Identity.h" />
+    <ClInclude Include="JsonPersistence.h" />
     <ClInclude Include="PartnerPreference.h" />
+    <ClInclude Include="PersonPersistence.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Properties.h" />
     <ClInclude Include="Race.h" />
