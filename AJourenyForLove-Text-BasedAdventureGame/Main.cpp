@@ -9,20 +9,20 @@
 #include "PartnerPreference.h"
 #include "Player.h"
 #include "Properties.h"
-#include "JsonPersistence.h"
+#include "PlayerPersistence.h"
 
 using namespace std;
 
 void CreateNewPlayer();
-int GetPlayerSettings(Properties* pp);
+int GetPlayerSettings(Properties* p);
 
 int main() {
 
-	JsonPersistence jp;
+	PlayerPersistence pp;
 
-	if (jp.IsFileEmpty()) {
+	if (pp.IsFileEmpty()) {
 		cout << "Welcome back to A Journey for Love" << endl;
-		Player player = jp.read();
+		Player player = pp.read();
 	}
 	else {
 		cout << "Welcome to A Journey for Love" << endl;
@@ -56,22 +56,22 @@ void CreateNewPlayer() {
 	int pp = GetPlayerSettings(&partnerPreference);
 
 	Player createdPlayer(name, age, (EIdentity(id)), (ERace(ra)), (EReligion(re)), (EBodyType(bt)), (EHairColor(hc)), (EEyeColor(ec)), (EPartnerPreference(pp)));
-	JsonPersistence jp;
-	jp.save(createdPlayer);
+	PlayerPersistence p;
+	p.save(createdPlayer);
 	createdPlayer.PrintPlayerInfo();
 
 	cout << "\nThank you for entering your settings!" << endl;
 }
 
-int GetPlayerSettings(Properties* pp) {
+int GetPlayerSettings(Properties* p) {
 	int num = {};
 	do {
 		cout << "Enter the pp you best identify with: " << endl;
-		pp->DisplayOptions();
+		p->DisplayOptions();
 		cin >> num;
-		if (!pp->IsValidIntInEnum(num)) {
+		if (!p->IsValidIntInEnum(num)) {
 			cout << "Invalid entry. Try again." << endl << endl;
 		}
-	} while(!pp->IsValidIntInEnum(num));
+	} while(!p->IsValidIntInEnum(num));
 	return num;
 }
