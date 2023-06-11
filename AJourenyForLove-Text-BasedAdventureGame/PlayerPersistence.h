@@ -4,7 +4,7 @@
 #include <nlohmann/json.hpp>
 using json = nlohmann::json;
 
-class JsonPersistence : public PersonPersistence{
+class PlayerPersistence : public PersonPersistence{
 	const string DEFAULT_PLAYER_JOURNAL_SETTINGS_FILE = "PlayerJournalSettings.json";
 public:
 	virtual void save(Player& p) override;

@@ -1,6 +1,6 @@
-#include "JsonPersistence.h"
+#include "PlayerPersistence.h"
 
-void JsonPersistence::save(Player& p) {
+void PlayerPersistence::save(Player& p) {
 	ofstream ofs;
 	ofs.open(DEFAULT_PLAYER_JOURNAL_SETTINGS_FILE);
 	json j;
@@ -17,7 +17,7 @@ void JsonPersistence::save(Player& p) {
 	ofs.close();
 }
 
-Player JsonPersistence::read() {
+Player PlayerPersistence::read() {
 	ifstream ifs;
 	ifs.open(DEFAULT_PLAYER_JOURNAL_SETTINGS_FILE);
 	json data = json::parse(ifs);
@@ -32,7 +32,7 @@ Player JsonPersistence::read() {
 	return p;
 }
 
-bool JsonPersistence::IsFileEmpty() {
+bool PlayerPersistence::IsFileEmpty() {
 	ifstream ifs(DEFAULT_PLAYER_JOURNAL_SETTINGS_FILE);
 	bool empty = {};
 	if (!ifs.fail()) {
