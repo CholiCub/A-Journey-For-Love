@@ -22,12 +22,11 @@ int main() {
 	JsonPersistence jp;
 
 	if (IsReturningPlayer()) {
-		std::cout << "Welcome back to A Journey for Love" << endl;
+		cout << "Welcome back to A Journey for Love" << endl;
 		Player player = jp.read();
-		player.PrintPlayerInfo();
 	}
 	else {
-		std::cout << "Welcome to A Journey for Love" << endl;
+		cout << "Welcome to A Journey for Love" << endl;
 		CreateNewPlayer();
 	}
 	cout << "\nThank you for playing!" << endl;
@@ -35,10 +34,10 @@ int main() {
 void CreateNewPlayer() {
 	string name{};
 	int age{};
-	std::cout << "\nEnter first name: ";
-	getline(std::cin, name);
+	cout << "\nEnter first name: ";
+	getline(cin, name);
 	do {
-		std::cout << "Enter age: ";
+		cout << "Enter age: ";
 		cin >> age;
 	} while (!(age >= 18 && age < 105));
 	Identity identity;
@@ -62,7 +61,7 @@ void CreateNewPlayer() {
 	jp.save(createdPlayer);
 	createdPlayer.PrintPlayerInfo();
 
-	std::cout << "\nThank you for entering your settings!" << endl;
+	cout << "\nThank you for entering your settings!" << endl;
 }
 
 bool IsReturningPlayer() {
@@ -74,11 +73,11 @@ bool IsReturningPlayer() {
 int GetPlayerSettings(Properties* pp) {
 	int num = {};
 	do {
-		std::cout << "Enter the pp you best identify with: " << endl;
+		cout << "Enter the pp you best identify with: " << endl;
 		pp->DisplayOptions();
-		std::cin >> num;
+		cin >> num;
 		if (!pp->IsValidIntInEnum(num)) {
-			std::cout << "Invalid entry. Try again." << endl << endl;
+			cout << "Invalid entry. Try again." << endl << endl;
 		}
 	} while(!pp->IsValidIntInEnum(num));
 	return num;
