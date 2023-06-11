@@ -33,9 +33,12 @@ Player JsonPersistence::read() {
 }
 
 bool JsonPersistence::IsFileEmpty() {
-	ifstream ifs;
-	ifs.open(DEFAULT_PLAYER_JOURNAL_SETTINGS_FILE);
-	bool empty = ifs.peek() == ifstream::traits_type::eof();
-	ifs.close();
+	ifstream ifs(DEFAULT_PLAYER_JOURNAL_SETTINGS_FILE);
+	bool empty = {};
+	if (!ifs.fail()) {
+		ifs.open(DEFAULT_PLAYER_JOURNAL_SETTINGS_FILE);
+		empty = ifs.peek() == ifstream::traits_type::eof();
+		ifs.close();
+	}
 	return empty;
 }
