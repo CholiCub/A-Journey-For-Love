@@ -10,11 +10,11 @@
 #include "Player.h"
 #include "Properties.h"
 #include "PlayerPersistence.h"
+#include "Properties.h"
 
 using namespace std;
 
 void CreateNewPlayer();
-int GetPlayerSettings(Properties* p);
 
 int main() {
 
@@ -46,14 +46,14 @@ void CreateNewPlayer() {
 	HairColor hairColor;
 	EyeColor eyeColor;
 	PartnerPreference partnerPreference;
-
-	int id = GetPlayerSettings(&identity);
-	int ra = GetPlayerSettings(&race);
-	int re = GetPlayerSettings(&religion);
-	int bt = GetPlayerSettings(&bodyType);
-	int hc = GetPlayerSettings(&hairColor);
-	int ec = GetPlayerSettings(&eyeColor);
-	int pp = GetPlayerSettings(&partnerPreference);
+	
+	int id = identity.GetPlayerSettings();
+	int ra = race.GetPlayerSettings();
+	int re = religion.GetPlayerSettings();
+	int bt = bodyType.GetPlayerSettings();
+	int hc = hairColor.GetPlayerSettings();
+	int ec = eyeColor.GetPlayerSettings();
+	int pp = partnerPreference.GetPlayerSettings();
 
 	Player createdPlayer(name, age, (EIdentity(id)), (ERace(ra)), (EReligion(re)), (EBodyType(bt)), (EHairColor(hc)), (EEyeColor(ec)), (EPartnerPreference(pp)));
 	PlayerPersistence p;
@@ -61,17 +61,4 @@ void CreateNewPlayer() {
 	createdPlayer.PrintPlayerInfo();
 
 	cout << "\nThank you for entering your settings!" << endl;
-}
-
-int GetPlayerSettings(Properties* p) {
-	int num = {};
-	do {
-		cout << "Enter the pp you best identify with: " << endl;
-		p->DisplayOptions();
-		cin >> num;
-		if (!p->IsValidIntInEnum(num)) {
-			cout << "Invalid entry. Try again." << endl << endl;
-		}
-	} while(!p->IsValidIntInEnum(num));
-	return num;
 }
