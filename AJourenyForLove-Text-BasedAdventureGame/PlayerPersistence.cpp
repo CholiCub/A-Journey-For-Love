@@ -18,9 +18,9 @@ void PlayerPersistence::save(Player& p) {
 }
 
 Player PlayerPersistence::read() {
-	ifstream ifs;
-	ifs.open(DEFAULT_PLAYER_JOURNAL_SETTINGS_FILE);
+	ifstream ifs(DEFAULT_PLAYER_JOURNAL_SETTINGS_FILE);
 	json data = json::parse(ifs);
+	ifs.close();
 
 	Player p(data.at("Name").get<string>(), data.at("Age").get<int>(), 
 		data.at("Identity").get<EIdentity>(), data.at("Race").get<ERace>(),
@@ -28,7 +28,6 @@ Player PlayerPersistence::read() {
 		data.at("HairColor").get<EHairColor>(),data.at("EyeColor").get<EEyeColor>(),
 		data.at("PartnerPreference").get<EPartnerPreference>());
 
-	ifs.close();
 	return p;
 }
 
