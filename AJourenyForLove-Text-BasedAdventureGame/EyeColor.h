@@ -12,9 +12,8 @@ enum class EEyeColor {
 };
 
 class EyeColor : public Properties {
-	const int NUM_OF_OPTIONS = 5;
 public:
+	EyeColor() :Properties(5) {};
 	std::string ToString(EEyeColor r);
 	void DisplayOptions() override;
-	bool IsValidIntInEnum(int playerInput) override;
 };

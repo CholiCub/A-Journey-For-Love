@@ -42,9 +42,3 @@ void Religion::DisplayOptions() {
 		std::cout << i << "." << ToString(EReligion(i)) << std::endl;
 	}
 }
-
-bool Religion::IsValidIntInEnum(int playerInput) {
-	if (playerInput > 0 && playerInput <= NUM_OF_OPTIONS) return true;
-	else return false;
-}
-

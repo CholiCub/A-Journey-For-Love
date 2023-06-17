@@ -30,8 +30,3 @@ void Race::DisplayOptions() {
 		std::cout << i << "." << ToString(ERace(i)) << std::endl;
 	}
 }
-
-bool Race::IsValidIntInEnum(int playerInput) {
-	if (playerInput > 0 && playerInput <= NUM_OF_OPTIONS) return true;
-	else return false;
-}

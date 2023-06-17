@@ -20,8 +20,3 @@ void EyeColor::DisplayOptions() {
 		std::cout << i << "." << ToString(EEyeColor(i)) << std::endl;
 	}
 }
-
-bool EyeColor::IsValidIntInEnum(int playerInput) {
-	if (playerInput > 0 && playerInput <= NUM_OF_OPTIONS) return true;
-	else return false;
-}

@@ -23,9 +23,8 @@ enum class EReligion {
 };
 
 class Religion : public Properties {
-	const int NUM_OF_OPTIONS = 16;
 public:
+	Religion() :Properties(16) {};
 	std::string ToString(EReligion r);
 	void DisplayOptions() override;
-	bool IsValidIntInEnum(int playerInput) override;
 };

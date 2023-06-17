@@ -12,9 +12,8 @@ enum class EBodyType {
 };
 
 class BodyType : public Properties {
-	const int NUM_OF_OPTIONS = 5;
 public:
+	BodyType() :Properties(5) {};
 	std::string ToString(EBodyType b);
 	void DisplayOptions() override;
-	bool IsValidIntInEnum(int playerInput) override;
 };

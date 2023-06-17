@@ -14,9 +14,8 @@ enum class EIdentity {
 };
 
 class Identity : public Properties {
-	const int NUM_OF_OPTIONS = 7;
 public:
+	Identity() :Properties(7) {};
 	std::string ToString(EIdentity i);
 	void DisplayOptions() override;
-	bool IsValidIntInEnum(int playerInput) override;
 };

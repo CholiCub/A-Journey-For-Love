@@ -17,9 +17,8 @@ enum class ERace {
 };
 
 class Race : public Properties{
-	const int NUM_OF_OPTIONS = 10;
 public:
+	Race() :Properties(10) {};
 	std::string ToString(ERace r);
 	void DisplayOptions() override;
-	bool IsValidIntInEnum(int playerInput);
 };

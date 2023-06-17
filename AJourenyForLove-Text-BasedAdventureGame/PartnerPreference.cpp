@@ -16,8 +16,3 @@ void PartnerPreference::DisplayOptions() {
 		std::cout << i << "." << ToString(EPartnerPreference(i)) << std::endl;
 	}
 }
-
-bool PartnerPreference::IsValidIntInEnum(int playerInput) {
-	if (playerInput > 0 && playerInput <= NUM_OF_OPTIONS) return true;
-	else return false;
-}

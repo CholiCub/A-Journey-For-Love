@@ -24,8 +24,3 @@ void HairColor::DisplayOptions() {
 		std::cout << i << "." << ToString(EHairColor(i)) << std::endl;
 	}
 }
-
-bool HairColor::IsValidIntInEnum(int playerInput) {
-	if (playerInput > 0 && playerInput <= NUM_OF_OPTIONS) return true;
-	else return false;
-}

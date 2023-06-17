@@ -10,9 +10,8 @@ enum class EPartnerPreference {
 };
 
 class PartnerPreference : public Properties{
-	const int NUM_OF_OPTIONS = 3;
 public:
+	PartnerPreference() :Properties(3) {};
 	std::string ToString(EPartnerPreference pp);
 	void DisplayOptions() override;
-	bool IsValidIntInEnum(int playerInput) override;
 };

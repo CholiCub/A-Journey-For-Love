@@ -1,5 +1,10 @@
 #include "Properties.h"
 
+bool Properties::IsValidIntInEnum(int playerInput) {
+	if (playerInput > 0 && playerInput <= NUM_OF_OPTIONS) return true;
+	else return false;
+}
+
 int Properties::GetPlayerSettings(){
 	int num = {};
 	do {

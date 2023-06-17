@@ -14,9 +14,8 @@ enum class EHairColor {
 };
 
 class HairColor : public Properties {
-	const int NUM_OF_OPTIONS = 7;
 public:
+	HairColor() :Properties(7) {};
 	std::string ToString(EHairColor h);
 	void DisplayOptions() override;
-	bool IsValidIntInEnum(int playerInput) override;
 };

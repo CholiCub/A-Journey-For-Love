@@ -24,8 +24,3 @@ void Identity::DisplayOptions() {
 		std::cout << i << "." << ToString(EIdentity(i)) << std::endl;
 	}
 }
-
-bool Identity::IsValidIntInEnum(int playerInput) {
-	if (playerInput > 0 && playerInput <= NUM_OF_OPTIONS) return true;
-	else return false;
-}

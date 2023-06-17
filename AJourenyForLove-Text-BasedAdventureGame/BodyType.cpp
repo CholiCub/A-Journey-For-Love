@@ -20,8 +20,3 @@ void BodyType::DisplayOptions() {
 		std::cout << i << "." << ToString(EBodyType(i)) << std::endl;
 	}
 }
-
-bool BodyType::IsValidIntInEnum(int playerInput) {
-	if (playerInput > 0 && playerInput <= NUM_OF_OPTIONS) return true;
-	else return false;
-}
