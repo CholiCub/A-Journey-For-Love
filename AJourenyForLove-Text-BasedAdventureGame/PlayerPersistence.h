@@ -1,13 +1,16 @@
 #pragma once
-#include"PersonPersistence.h"
+#include<iostream>
 #include<fstream>
+#include "Player.h"
 #include <nlohmann/json.hpp>
+
+using namespace std;
 using json = nlohmann::json;
 
-class PlayerPersistence : public PersonPersistence{
+class PlayerPersistence {
 	const string DEFAULT_PLAYER_JOURNAL_SETTINGS_FILE = "PlayerJournalSettings.json";
 public:
-	virtual void save(Player& p) override;
-	virtual Player read() override;
+	void save(Player& p);
+	virtual Player read();
 	bool IsFileEmpty();
 };

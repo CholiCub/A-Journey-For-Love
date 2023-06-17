@@ -42,7 +42,10 @@
     <ClCompile Include="Player.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="JsonPersistence.cpp">
+    <ClCompile Include="PlayerPersistence.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Properties.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -74,10 +77,7 @@
     <ClInclude Include="Properties.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="PersonPersistence.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="JsonPersistence.h">
+    <ClInclude Include="PlayerPersistence.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
