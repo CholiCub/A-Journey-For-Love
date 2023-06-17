@@ -1,8 +1,6 @@
 #include "PlayerPersistence.h"
 
 void PlayerPersistence::save(Player& p) {
-	ofstream ofs;
-	ofs.open(DEFAULT_PLAYER_JOURNAL_SETTINGS_FILE);
 	json j;
 	j["Name"] = p.getName();
 	j["Age"] = p.getAge();
@@ -13,6 +11,8 @@ void PlayerPersistence::save(Player& p) {
 	j["EyeColor"] = p.getEyeColor();
 	j["HairColor"] = p.getHairColor();
 	j["PartnerPreference"] = p.getPartnerPreference();
+	ofstream ofs;
+	ofs.open(DEFAULT_PLAYER_JOURNAL_SETTINGS_FILE);
 	ofs << j;
 	ofs.close();
 }
