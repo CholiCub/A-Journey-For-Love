@@ -20,9 +20,10 @@ int main() {
 
 	PlayerPersistence pp;
 
-	if (pp.IsFileEmpty()) {
+	if (pp.IsEmpty()) {
 		cout << "Welcome back to A Journey for Love" << endl;
 		Player player = pp.read();
+		player.PrintPlayerInfo();
 	}
 	else {
 		cout << "Welcome to A Journey for Love" << endl;
