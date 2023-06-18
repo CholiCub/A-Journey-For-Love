@@ -32,8 +32,11 @@ Player PlayerPersistence::read() {
 }
 
 bool PlayerPersistence::IsEmpty() {
+	bool empty = false;
 	ifstream ifs(DEFAULT_PLAYER_JOURNAL_SETTINGS_FILE);
-	if (ifs.fail()) return true;
-	else return false;
+	if (!ifs.fail()) {
+		empty = ifs.peek() == ifstream::traits_type::eof();
+	}
 	ifs.close();
+	return empty;
 }
