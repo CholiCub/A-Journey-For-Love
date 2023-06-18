@@ -31,7 +31,7 @@ Player PlayerPersistence::read() {
 	return p;
 }
 
-bool PlayerPersistence::IsFileEmpty() {
+bool PlayerPersistence::IsEmpty() {
 	ifstream ifs(DEFAULT_PLAYER_JOURNAL_SETTINGS_FILE);
 	bool empty = {};
 	if (!ifs.fail()) {

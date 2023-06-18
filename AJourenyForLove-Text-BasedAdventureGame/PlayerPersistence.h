@@ -12,5 +12,5 @@ class PlayerPersistence {
 public:
 	void save(Player& p);
 	virtual Player read();
-	bool IsFileEmpty();
+	bool IsEmpty();
 };
