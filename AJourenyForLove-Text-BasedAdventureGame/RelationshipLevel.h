@@ -12,8 +12,8 @@ enum class ERelationshipLevel {
 };
 
 class RelationshipLevel : public Properties {
-	const int NUM_OF_OPTIONS = 6;
 public:
+	RelationshipLevel() :Properties(6) {};
 	std::string ToString(ERelationshipLevel h);
 	void DisplayOptions() override;
 };
