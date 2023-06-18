@@ -1,16 +1,22 @@
 #include "EyeColor.h"
 
-string EyeColorToString(EyeColor e) {
+std::string EyeColor::ToString(EEyeColor e) {
 	switch (e) {
-	case EyeColor::Brown:
+	case EEyeColor::Brown:
 		return "Brown";
-	case EyeColor::Green:
+	case EEyeColor::Green:
 		return "Green";
-	case EyeColor::Blue:
+	case EEyeColor::Blue:
 		return "Blue";
-	case EyeColor::Hazel:
+	case EEyeColor::Hazel:
 		return "Hazel";
-	case EyeColor::Other:
+	case EEyeColor::Other:
 		return "Other";
+	}
+}
+
+void EyeColor::DisplayOptions() {
+	for (int i = 1; i <= NUM_OF_OPTIONS; i++) {
+		std::cout << i << "." << ToString(EEyeColor(i)) << std::endl;
 	}
 }

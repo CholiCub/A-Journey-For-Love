@@ -1,11 +1,18 @@
 #include "PartnerPreference.h"
-string PartnerPreferenceToString(PartnerPreference pp) {
+
+std::string PartnerPreference::ToString(EPartnerPreference pp) {
 	switch (pp) {
-	case PartnerPreference::male:
+	case EPartnerPreference::male:
 		return "Male";
-	case PartnerPreference::female:
+	case EPartnerPreference::female:
 		return "Female";
-	case PartnerPreference::both:
+	case EPartnerPreference::both:
 		return "Both male and female";
+	}
+}
+
+void PartnerPreference::DisplayOptions() {
+	for (int i = 1; i <= NUM_OF_OPTIONS; i++) {
+		std::cout << i << "." << ToString(EPartnerPreference(i)) << std::endl;
 	}
 }

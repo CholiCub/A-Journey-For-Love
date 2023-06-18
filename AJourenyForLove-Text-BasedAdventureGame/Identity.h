@@ -1,10 +1,9 @@
+#pragma once
+#include"Properties.h"
 #include<string>
-using namespace std;
+#include<iostream>
 
-
-const int NUM_OF_IDENTITIES = 7;
-
-enum class Identity {
+enum class EIdentity {
 	Man = 1,
 	Woman,
 	CisWoman,
@@ -13,4 +12,10 @@ enum class Identity {
 	TransMan,
 	NonBinary
 };
-string IdentityToString(Identity i);
+
+class Identity : public Properties {
+public:
+	Identity() :Properties(7) {};
+	std::string ToString(EIdentity i);
+	void DisplayOptions() override;
+};

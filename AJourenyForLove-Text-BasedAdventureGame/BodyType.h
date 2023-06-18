@@ -1,12 +1,19 @@
+#pragma once
+#include"Properties.h"
 #include<string>
-using namespace std;
+#include<iostream>
 
-const int NUM_OF_BODY_TYPES = 5;
-enum BodyType {
+enum class EBodyType {
 	Thin = 1,
 	Athletic,
 	Average,
 	AFewExtra,
 	BigTallOrBBW
 };
-string BodyTypeToString(BodyType b);
+
+class BodyType : public Properties {
+public:
+	BodyType() :Properties(5) {};
+	std::string ToString(EBodyType b);
+	void DisplayOptions() override;
+};

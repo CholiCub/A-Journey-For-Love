@@ -1,12 +1,17 @@
 #pragma once
+#include"Properties.h"
 #include<string>
-using namespace std;
-const int NUM_OF_PARTNER_PREFERENCE = 3;
-enum class PartnerPreference {
+#include<iostream>
+
+enum class EPartnerPreference {
 	male = 1,
 	female,
 	both
 };
-string PartnerPreferenceToString(PartnerPreference pp);
 
-
+class PartnerPreference : public Properties{
+public:
+	PartnerPreference() :Properties(3) {};
+	std::string ToString(EPartnerPreference pp);
+	void DisplayOptions() override;
+};

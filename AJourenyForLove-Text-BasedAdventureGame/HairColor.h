@@ -1,11 +1,10 @@
 #pragma once
+#include"Properties.h"
 #include<string>
-using namespace std;
+#include<iostream>
 
-const int NUM_OF_HAIR_COLORS = 7;
-
-enum class HairColor {
-	NoHair=1,
+enum class EHairColor {
+	NoHair = 1,
 	Black,
 	Brown,
 	Blonde,
@@ -14,4 +13,9 @@ enum class HairColor {
 	Colorful
 };
 
-string HairColorToString(HairColor h);
+class HairColor : public Properties {
+public:
+	HairColor() :Properties(7) {};
+	std::string ToString(EHairColor h);
+	void DisplayOptions() override;
+};

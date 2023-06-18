@@ -1,26 +1,32 @@
 #include "Race.h"
 
-string RaceToString(Race r) {
+std::string Race::ToString(ERace r) {
 	switch (r) {
-	case Race::AfricanAmerican:
+	case ERace::AfricanAmerican:
 		return "African American";
-	case Race::Asian:
+	case ERace::Asian:
 		return "Asian";
-	case Race::Caucasian:
+	case ERace::Caucasian:
 		return "Caucasian";
-	case Race::Black:
+	case ERace::Black:
 		return "Black";
-	case Race::Indian:
+	case ERace::Indian:
 		return "Indian";
-	case Race::IndigenousOrAboriginal:
+	case ERace::IndigenousOrAboriginal:
 		return "Indigenous / Aboriginal";
-	case Race::LatinOrHispanic:
+	case ERace::LatinOrHispanic:
 		return "Latin / Hispanic";
-	case Race::MiddleEastern:
+	case ERace::MiddleEastern:
 		return "Middle Eastern";
-	case Race::Mixed:
+	case ERace::Mixed:
 		return "Mixed";
-	case Race::Other:
+	case ERace::Other:
 		return "Other";
+	}
+}
+
+void Race::DisplayOptions() {
+	for (int i = 1; i <= NUM_OF_OPTIONS; i++) {
+		std::cout << i << "." << ToString(ERace(i)) << std::endl;
 	}
 }

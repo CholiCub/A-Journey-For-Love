@@ -1,20 +1,26 @@
 #include "Identity.h"
 
-string IdentityToString(Identity i) {
+std::string Identity::ToString(EIdentity i) {
 	switch (i) {
-	case Identity::Man:
+	case EIdentity::Man:
 		return "Man";
-	case Identity::Woman:
+	case EIdentity::Woman:
 		return "Woman";
-	case Identity::CisWoman:
+	case EIdentity::CisWoman:
 		return "Cis Woman";
-	case Identity::TransWoman:
+	case EIdentity::TransWoman:
 		return "Trans Woman";
-	case Identity::CisMan:
+	case EIdentity::CisMan:
 		return "Cis Man";
-	case Identity::TransMan:
+	case EIdentity::TransMan:
 		return "Trans Man";
-	case Identity::NonBinary:
+	case EIdentity::NonBinary:
 		return "Non-Binary";
+	}
+}
+
+void Identity::DisplayOptions() {
+	for (int i = 1; i <= NUM_OF_OPTIONS; i++) {
+		std::cout << i << "." << ToString(EIdentity(i)) << std::endl;
 	}
 }

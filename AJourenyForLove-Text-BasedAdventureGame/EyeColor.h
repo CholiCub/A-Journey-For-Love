@@ -1,10 +1,9 @@
 #pragma once
+#include"Properties.h"
 #include<string>
-using namespace std;
+#include<iostream>
 
-const int NUM_OF_EYE_COLORS = 5;
-
-enum class EyeColor {
+enum class EEyeColor {
 	Brown = 1,
 	Green,
 	Blue,
@@ -12,5 +11,9 @@ enum class EyeColor {
 	Other
 };
 
-string EyeColorToString(EyeColor r);
-
+class EyeColor : public Properties {
+public:
+	EyeColor() :Properties(5) {};
+	std::string ToString(EEyeColor r);
+	void DisplayOptions() override;
+};

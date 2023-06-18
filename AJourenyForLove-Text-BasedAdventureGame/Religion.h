@@ -1,9 +1,9 @@
 #pragma once
+#include"Properties.h"
 #include<string>
-using namespace std;
-const int NUM_OF_RELIGION = 16;
+#include<iostream>
 
-enum class Religion {
+enum class EReligion {
 	NonReligious = 1,
 	Anglican,
 	Baptist,
@@ -21,5 +21,10 @@ enum class Religion {
 	Spiritual,
 	Other
 };
-string ReligionToString(Religion r);
 
+class Religion : public Properties {
+public:
+	Religion() :Properties(16) {};
+	std::string ToString(EReligion r);
+	void DisplayOptions() override;
+};

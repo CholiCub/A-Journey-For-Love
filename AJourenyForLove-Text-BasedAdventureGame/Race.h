@@ -1,9 +1,9 @@
+#pragma once
+#include"Properties.h"
 #include<string>
-using namespace std;
+#include<iostream>
 
-const int NUM_OF_RACES = 10;
-
-enum class Race {
+enum class ERace {
 	AfricanAmerican = 1,
 	Asian,
 	Caucasian,
@@ -15,4 +15,10 @@ enum class Race {
 	Mixed,
 	Other
 };
-string RaceToString(Race r);
+
+class Race : public Properties{
+public:
+	Race() :Properties(10) {};
+	std::string ToString(ERace r);
+	void DisplayOptions() override;
+};
