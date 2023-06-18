@@ -11,6 +11,6 @@ class PlayerPersistence {
 	const string DEFAULT_PLAYER_JOURNAL_SETTINGS_FILE = "PlayerJournalSettings.json";
 public:
 	void save(Player& p);
-	virtual Player read();
+	Player read();
 	bool IsEmpty();
 };
