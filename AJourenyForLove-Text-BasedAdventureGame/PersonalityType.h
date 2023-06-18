@@ -22,8 +22,8 @@ enum class EPersonalityType {
 };
 
 class PersonalityType : public Properties {
-	const int NUM_OF_OPTIONS = 16;
 public:
+	PersonalityType() :Properties(16) {};
 	std::string ToString(EPersonalityType h);
 	void DisplayOptions() override;
 };

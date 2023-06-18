@@ -11,8 +11,8 @@ enum class EIntention {
 };
 
 class Intention : public Properties {
-	const int NUM_OF_OPTIONS = 5;
 public:
+	Intention() :Properties(5) {};
 	std::string ToString(EIntention h);
 	void DisplayOptions() override;
 };
