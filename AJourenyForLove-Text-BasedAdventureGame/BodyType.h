@@ -1,7 +1,6 @@
 #pragma once
 #include"Properties.h"
 #include<string>
-#include<iostream>
 
 enum class EBodyType {
 	Thin = 1,

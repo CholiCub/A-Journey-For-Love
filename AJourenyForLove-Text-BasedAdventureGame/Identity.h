@@ -1,7 +1,6 @@
 #pragma once
 #include"Properties.h"
 #include<string>
-#include<iostream>
 
 enum class EIdentity {
 	Man = 1,
