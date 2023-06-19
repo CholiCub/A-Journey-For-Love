@@ -11,6 +11,8 @@ private:
 	EIntention intention;
 	ERelationshipLevel relationshipLevel;
 public:
-	Date();
+	Date(int cp, EPersonalityType pt, EIntention i, ERelationshipLevel rl)
+		:Person(name, age, identity, race, religion, bodyType, hairColor, eyeColor, partnerPreference),
+		connectionPoints(cp), personalityType(pt), intention(i), relationshipLevel(rl) {};
 };
 
