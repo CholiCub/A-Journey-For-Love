@@ -166,6 +166,7 @@
     <ClInclude Include="Religion.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="DateJournalSettings.json" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
