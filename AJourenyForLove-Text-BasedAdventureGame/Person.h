@@ -10,7 +10,7 @@
 #include "PartnerPreference.h"
 
 class Person {
-private:
+protected:
 	std::string name;
 	int age;
 	EIdentity identity;
