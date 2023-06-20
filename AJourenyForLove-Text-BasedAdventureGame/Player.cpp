@@ -57,14 +57,14 @@ ostream& operator<<(ostream& os, const Player& p) {
 	HairColor hc;
 	EyeColor ec;
 	PartnerPreference pp;
-	os << "Name: " << p.name <<"\n";
-	os << "Age: " << p.age << "\n";
-	os << "Identity: " << i.ToString(p.identity) << "\n";
-	os << "Race: " << ra.ToString(p.race) << "\n";
-	os << "Religion: " << re.ToString(p.religion) << "\n";
-	os << "Body Type: " << bt.ToString(p.bodyType) << "\n";
-	os << "Hair Color: " << hc.ToString(p.hairColor) << "\n";
-	os << "Eye Color: " << ec.ToString(p.eyeColor) << "\n";
-	os << "Partner Preference: " << pp.ToString(p.partnerPreference) << "\n";
+	os << "Name: " << p.name << endl;
+	os << "Age: " << p.age << endl;
+	os << "Identity: " << i.ToString(p.identity) << endl;
+	os << "Race: " << ra.ToString(p.race) << endl;
+	os << "Religion: " << re.ToString(p.religion) << endl;
+	os << "Body Type: " << bt.ToString(p.bodyType) << endl;
+	os << "Hair Color: " << hc.ToString(p.hairColor) << endl;
+	os << "Eye Color: " << ec.ToString(p.eyeColor) << endl;
+	os << "Partner Preference: " << pp.ToString(p.partnerPreference) << endl;
 	return os;
 }
