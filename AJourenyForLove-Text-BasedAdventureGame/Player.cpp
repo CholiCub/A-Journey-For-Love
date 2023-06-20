@@ -13,27 +13,6 @@ Player::Player(string name, int age, EIdentity identity, ERace race, EReligion r
 	this->partnerPreference = partnerPreference;
 }
 
-void Player::PrintPlayerInfo() {
-	Identity id;
-	Race ra;
-	Religion re;
-	BodyType bt;
-	HairColor hc;
-	EyeColor ec;
-	PartnerPreference pp;
-	std::cout << "Your Settings: " << endl;
-	std::cout << "---------------------------------"<< endl;
-	std::cout << "Name: " << name << endl;
-	std::cout << "Age: " << age << endl;
-	std::cout << "Identity: " << id.ToString(identity) << endl;
-	std::cout << "Race: " << ra.ToString(race) << endl;
-	std::cout << "Religion: " << re.ToString(religion) << endl;
-	std::cout << "BodyType: " << bt.ToString(bodyType) << endl;
-	std::cout << "EyeColor: " << ec.ToString(eyeColor) << endl;
-	std::cout << "HairColor: " << hc.ToString(hairColor) << endl;
-	std::cout << "PartnerPreference: " << pp.ToString(partnerPreference) << endl;
-}
-
 string Player::getName() const {
 	return this->name;
 }
@@ -68,4 +47,24 @@ EEyeColor Player::getEyeColor() const {
 
 EPartnerPreference Player::getPartnerPreference() const {
 	return this->partnerPreference;
+}
+
+ostream& operator<<(ostream& os, const Player& p) {
+	Identity i;
+	Race ra;
+	Religion re;
+	BodyType bt;
+	HairColor hc;
+	EyeColor ec;
+	PartnerPreference pp;
+	os << "Name: " << p.name << endl;
+	os << "Age: " << p.age << endl;
+	os << "Identity: " << i.ToString(p.identity) << endl;
+	os << "Race: " << ra.ToString(p.race) << endl;
+	os << "Religion: " << re.ToString(p.religion) << endl;
+	os << "Body Type: " << bt.ToString(p.bodyType) << endl;
+	os << "Hair Color: " << hc.ToString(p.hairColor) << endl;
+	os << "Eye Color: " << ec.ToString(p.eyeColor) << endl;
+	os << "Partner Preference: " << pp.ToString(p.partnerPreference) << endl;
+	return os;
 }

@@ -15,6 +15,7 @@
 using namespace std;
 
 void CreateNewPlayer();
+void PrintPlayerInfo(const Player& p);
 
 int main() {
 
@@ -23,7 +24,7 @@ int main() {
 	if (!pp.IsEmpty()) {
 		cout << "Welcome back to A Journey for Love" << endl;
 		Player player = pp.read();
-		player.PrintPlayerInfo();
+		PrintPlayerInfo(player);
 	}
 	else {
 		cout << "Welcome to A Journey for Love" << endl;
@@ -59,7 +60,13 @@ void CreateNewPlayer() {
 	Player createdPlayer(name, age, (EIdentity(id)), (ERace(ra)), (EReligion(re)), (EBodyType(bt)), (EHairColor(hc)), (EEyeColor(ec)), (EPartnerPreference(pp)));
 	PlayerPersistence p;
 	p.save(createdPlayer);
-	createdPlayer.PrintPlayerInfo();
+	PrintPlayerInfo(createdPlayer);
 
 	cout << "\nThank you for entering your settings!" << endl;
+}
+
+void PrintPlayerInfo(const Player& p) {
+	std::cout << "Your Settings: " << endl;
+	std::cout << "---------------------------------" << endl;
+	cout << p << endl;
 }
