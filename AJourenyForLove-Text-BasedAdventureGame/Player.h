@@ -26,7 +26,7 @@ private:
 public:
 	Player(std::string name, int age, EIdentity identity, ERace race, EReligion religion, EBodyType bodyType, EHairColor hairColor, EEyeColor eyeColor, EPartnerPreference partnerPreference);
 	
-	void PrintPlayerInfo();
+	friend ostream& operator<<(ostream& os, const Player& p);
 
 	std::string getName() const;
 	int getAge() const;
