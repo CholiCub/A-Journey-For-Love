@@ -133,6 +133,7 @@
   <ItemGroup>
     <ClCompile Include="BodyType.cpp" />
     <ClCompile Include="Date.cpp" />
+    <ClCompile Include="Dialogue.cpp" />
     <ClCompile Include="EyeColor.cpp" />
     <ClCompile Include="HairColor.cpp" />
     <ClCompile Include="Identity.cpp" />
@@ -151,6 +152,7 @@
   <ItemGroup>
     <ClInclude Include="BodyType.h" />
     <ClInclude Include="Date.h" />
+    <ClInclude Include="Dialogue.h" />
     <ClInclude Include="EyeColor.h" />
     <ClInclude Include="HairColor.h" />
     <ClInclude Include="Identity.h" />
