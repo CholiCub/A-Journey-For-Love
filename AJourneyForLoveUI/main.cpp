@@ -1,29 +1,57 @@
 #include"raylib.h"
-enum GameScreen { TITLE = 0, PLAYER_SETTINGS, GAMEPLAY };
-int main() {
-	const int SCREEN_WIDTH = 800;
-	const int SCREEN_HEIGHT = 450;
-	GameScreen gameScreen = TITLE;
-	InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "A JOURNEY FOR LOVE");
+#include"screens.h"
+//enum GameScreen { TITLE = 0, PLAYER_SETTINGS, GAMEPLAY };
+GameScreen gameScreen = TITLE;
+static const int SCREEN_WIDTH = 1920;
+static const int SCREEN_HEIGHT = 800;
 
-	Rectangle startBox = { SCREEN_WIDTH / 2 - 70,SCREEN_HEIGHT / 2 + 10, 225,50 };
-	bool mouseOnStartBox = false;
-	
+//screen manage transitions
+bool IsOnTransition = false;
+bool IsTransFadeOut = false;
+int transFromScreen = -1;
+
+//Local functions
+void UpdateDrawFrame();
+
+int main() {
+	InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "A JOURNEY FOR LOVE");
+	currentScreen = TITLE;
+	InitTitleScreen();
+
 	SetTargetFPS(60);
 
 	while (!WindowShouldClose()) {
+		UpdateDrawFrame();
 		//Update
-
-		Vector2 mousePos = GetMousePosition();
-		if ((CheckCollisionPointRec(mousePos, startBox))) { mouseOnStartBox = true; }
-		else mouseOnStartBox = false;
-		if (mouseOnStartBox && IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) { /*gameScreen = PLAYER_SETTINGS;*/ DrawText("PLayer_settings scene", 20, 20, 20, RED);
-		}
+		
 		BeginDrawing();
 		ClearBackground(WHITE);
-		DrawText("A JOURNEY FOR LOVE", SCREEN_WIDTH/2-130, SCREEN_HEIGHT/2-100, 25, SKYBLUE);
-		DrawText("START JOURNEY", SCREEN_WIDTH/2-70, SCREEN_HEIGHT/2+10, 20, mouseOnStartBox ? RED : BLACK);
 		EndDrawing();
 	}
 	CloseWindow();
+}
+void UpdateDrawFrame() {
+	if (!IsOnTransition) {
+		switch (currentScreen) {
+		case UNKNOWN:
+			break;
+		case STUDIO_LOGO:
+			UpdateStudioLogoScreen();
+			break;
+		case TITLE:
+			UpdateTitleScreen();
+			break;
+		case PLAYER_SETTINGS:
+			UpdatePlayerSettingsScreen();
+			break;
+		case GAMEPLAY:
+			UpdateGameplayScreen();
+			break;
+		case ENDING:
+			UpdateEndingScreen();
+			break;
+		default:
+			break;
+		}
+	}
 }

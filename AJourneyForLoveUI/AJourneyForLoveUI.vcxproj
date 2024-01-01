@@ -128,6 +128,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="screen_ending.cpp" />
+    <ClCompile Include="screen_gameplay.cpp" />
+    <ClCompile Include="screen_player_setting.cpp" />
+    <ClCompile Include="screen_title.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="screens.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
